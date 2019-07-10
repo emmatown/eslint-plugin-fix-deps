@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-fix-deps",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/eslint-plugin-fix-deps.cjs.js",
   "license": "MIT",
   "repository": "https://github.com/mitchellhamilton/eslint-plugin-fix-deps",
