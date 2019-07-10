@@ -193,7 +193,7 @@ function testConfig(config, filename) {
       minimatch(filename, c) || minimatch(filename, path.join(process.cwd(), c))
   );
 }
-module.exports = {
+export default {
   meta: {
     type: "problem",
     docs: {
