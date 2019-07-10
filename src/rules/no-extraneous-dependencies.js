@@ -132,10 +132,7 @@ function reportIfMissing(context, deps, depsOptions, node, name) {
   );
 
   let rootDepVersion =
-    rootPkg.dependencies[packageName] === undefined
-      ? rootPkg.devDependencies[packageName]
-      : rootPkg.dependencies[packageName];
-  let isDepInRoot = rootDepVersion !== undefined;
+    rootPkg.dependencies[packageName] || rootPkg.devDependencies[packageName];
 
   let { pkg, path: pkgPath } = readPkgUp.sync({
     cwd: filename,
@@ -150,14 +147,14 @@ function reportIfMissing(context, deps, depsOptions, node, name) {
   context.report({
     node,
     message:
-      isDepInRoot || workspace
+      rootDepVersion || workspace
         ? `'${packageName}' should be listed in the package's dependencies.`
         : `'${packageName}' should be listed in the project and package's dependencies.`,
     fix() {
       // yes,
       // i know this is probably bad
       // but it works so ¯\_(ツ)_/¯
-      if (isDepInRoot || workspace) {
+      if (rootDepVersion || workspace) {
         // we want to read it again in case it's been modified since the rule was run
         let pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
         // i want to special case react because it's a really common case
