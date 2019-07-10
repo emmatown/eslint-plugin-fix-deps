@@ -1,0 +1,25 @@
+{
+  "name": "eslint-plugin-fix-deps",
+  "version": "0.1.0",
+  "main": "dist/eslint-plugin-fix-deps.cjs.js",
+  "license": "MIT",
+  "repository": "https://github.com/mitchellhamilton/eslint-plugin-fix-deps",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "flow-bin": "^0.102.0",
+    "jest": "^24.8.0",
+    "preconstruct": "^0.0.82"
+  },
+  "dependencies": {
+    "eslint-module-utils": "^2.4.0",
+    "lodash": "^4.17.13",
+    "resolve": "^1.11.1"
+  },
+  "scripts": {
+    "prepublishOnly": "preconstruct build"
+  }
+}
